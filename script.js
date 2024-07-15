@@ -31,5 +31,5 @@ function operate(firstNumber, secondNumber, operator) {
     }
 }
 
-console.log(operate(10, 2, "*"));
+
 
