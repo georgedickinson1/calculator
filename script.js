@@ -31,5 +31,14 @@ function operate(firstNumber, secondNumber, operator) {
     }
 }
 
+let inputDisplay = "";
 
+const smallInput = document.querySelector(".small-input");
+smallInput.textContent = inputDisplay;
 
+document.querySelectorAll(".button").forEach(button => {
+    button.addEventListener("click", () => {
+        const value = button.textContent;
+        smallInput.textContent += value;
+    })
+})
