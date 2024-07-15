@@ -14,4 +14,22 @@ function divide(a, b) {
     return a / b;
 }
 
-console.log(multiply(5, 5));
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
+
+function operate(firstNumber, secondNumber, operator) {
+    switch(operator) {
+        case "+":
+            return add(firstNumber, secondNumber);
+        case "-":
+            return subtract(firstNumber, secondNumber);
+        case "*":
+            return multiply(firstNumber, secondNumber);
+        case "/":
+            return divide(firstNumber, secondNumber);
+    }
+}
+
+console.log(operate(10, 2, "*"));
+
