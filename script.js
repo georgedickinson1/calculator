@@ -24,14 +24,15 @@ function operate(firstNumber, secondNumber, operator) {
             return add(firstNumber, secondNumber);
         case "-":
             return subtract(firstNumber, secondNumber);
-        case "*":
+        case "×":
             return multiply(firstNumber, secondNumber);
-        case "/":
+        case "÷":
             return divide(firstNumber, secondNumber);
     }
 }
 
 const smallInput = document.querySelector(".small-input");
+const outputDisplay = document.querySelector(".large-input");
 smallInput.textContent = "";
 
 document.querySelectorAll(".button.number").forEach(button => {
@@ -50,11 +51,12 @@ document.querySelectorAll(".button.symbol").forEach(button => {
 
 document.querySelector("#clear").addEventListener("click", () => {
     smallInput.textContent = "";
+    outputDisplay.textContent = "0";
 })
 
 
 document.querySelector("#del").addEventListener("click", () => {
-    let value = smallInput.textContent;
+    const value = smallInput.textContent;
     if (value[value.length - 1] === " ") {
         smallInput.textContent = value.substring(0, value.length - 3);
     } else {
@@ -62,3 +64,16 @@ document.querySelector("#del").addEventListener("click", () => {
     }
 })
 
+document.querySelector("#equals").addEventListener("click", () => {
+    const input = smallInput.textContent;
+    const splitInput = input.split(" ");
+    const numberOne = Number(splitInput[0]);
+    const numberTwo = Number(splitInput[2]);
+    const operator = splitInput[1];
+    const result = operate(numberOne, numberTwo, operator);
+    if (result % 1 != 0) {
+        outputDisplay.textContent = result.toFixed(2);
+    } else {
+        outputDisplay.textContent = result;
+    }
+})
