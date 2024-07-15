@@ -31,14 +31,34 @@ function operate(firstNumber, secondNumber, operator) {
     }
 }
 
-let inputDisplay = "";
-
 const smallInput = document.querySelector(".small-input");
-smallInput.textContent = inputDisplay;
+smallInput.textContent = "";
 
-document.querySelectorAll(".button").forEach(button => {
+document.querySelectorAll(".button.number").forEach(button => {
     button.addEventListener("click", () => {
         const value = button.textContent;
         smallInput.textContent += value;
     })
 })
+
+document.querySelectorAll(".button.symbol").forEach(button => {
+    button.addEventListener("click", () => {
+        const value = button.textContent;
+        smallInput.textContent += " " + value + " ";
+    })
+})
+
+document.querySelector("#clear").addEventListener("click", () => {
+    smallInput.textContent = "";
+})
+
+
+document.querySelector("#del").addEventListener("click", () => {
+    let value = smallInput.textContent;
+    if (value[value.length - 1] === " ") {
+        smallInput.textContent = value.substring(0, value.length - 3);
+    } else {
+        smallInput.textContent = value.substring(0, value.length - 1);
+    }
+})
+
