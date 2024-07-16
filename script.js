@@ -1,19 +1,19 @@
 // Operation Functions
 function add(a, b) {
     return a + b;
-}
+};
 
 function subtract(a, b) {
     return a - b;
-}
+};
 
 function multiply(a, b) {
     return a * b;
-}
+};
 
 function divide(a, b) {
     return a / b;
-}
+};
 
 let firstNumber = "";
 let secondNumber = "";
@@ -29,8 +29,8 @@ function operate(firstNumber, secondNumber, operator) {
             return multiply(firstNumber, secondNumber);
         case "÷":
             return divide(firstNumber, secondNumber);
-    }
-}
+    };
+};
 
 // Selecting & Assigning Input/Output Display 
 const smallInput = document.querySelector(".small-input");
@@ -42,25 +42,25 @@ document.querySelectorAll(".button.number").forEach(button => {
     button.addEventListener("click", () => {
         const value = button.textContent;
         smallInput.textContent += value;
-    })
-})
+    });
+});
 
 // Connecting Display with Symbols
 document.querySelectorAll(".button.symbol").forEach(button => {
     button.addEventListener("click", () => {
         const value = button.textContent;
         smallInput.textContent += " " + value + " ";
-    })
-})
+    });
+});
 
 // Reset Calculator Function and Assigning to "Clear" Button
 function clearAll() {
     smallInput.textContent = "";
     outputDisplay.textContent = "0";
-}
+};
 document.querySelector("#clear").addEventListener("click", () => {
     clearAll();
-})
+});
 
 // Backspace Function and Assigning to "Del" Button
 function deleteKey() {
@@ -70,10 +70,10 @@ function deleteKey() {
     } else {
         smallInput.textContent = value.substring(0, value.length - 1);
     
-}}
+}};
 document.querySelector("#del").addEventListener("click", () => {
     deleteKey();
-})
+});
 
 // Equals Function and Assigning to "Equals" Key
 function equals() {
@@ -88,10 +88,10 @@ function equals() {
     } else {
         outputDisplay.textContent = result;
     }
-}
+};
 document.querySelector("#equals").addEventListener("click", () => {
     equals();
-})
+});
 
 // Key Press Actions
 document.addEventListener("keydown", function(event) {
