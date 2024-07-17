@@ -77,7 +77,7 @@ body {
 .button.cyan {
     background-color: #48E5C2;
     font-size: 38px;
-    padding-bottom: 7px;
+    padding-top: 3px;
 }
 
 #clear, #del {
