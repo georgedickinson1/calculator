@@ -23,7 +23,6 @@ body {
 }
 
 .input-container {
-    /* border: solid red; */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -34,18 +33,24 @@ body {
     margin-bottom: 20px;
     box-sizing: border-box;
     padding: 0px 15px;
+    overflow: hidden;
+    position: relative;
 }
 
 .small-input {
     color: #808080;
     font-size: 20px;
     padding-right: 10px;
+    position: absolute;
+    white-space: nowrap;
+    align-self: flex-end;
+    padding-bottom: 80px;
 }
 
 .large-input {
     font-size: 64px;
     color: white;
-
+    position: absolute;
 }
 
 .buttons-container {

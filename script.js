@@ -54,13 +54,12 @@ function symbolCall(symbolValue) {
         if (alreadySymbol === true) {
             const result = equals();
             clearAll();
+            outputDisplay.textContent = result;
             smallInput.textContent += result + " " + symbolValue + " ";
             alreadySymbol = true;
-            console.log("Supposed to be symbol already")
         } else if (alreadySymbol === false) {
             smallInput.textContent += " " + symbolValue + " ";
             alreadySymbol = true;
-            console.log("not a symbol")
         };
 }
 
@@ -72,8 +71,9 @@ document.querySelectorAll(".button.symbol").forEach(button => {
 });
 
 // Reset Calculator Function and Assigning to "Clear" Button
-function clearAll() {
+function clearAll(result) {
     alreadySymbol = false;
+    outputDisplay.style.fontSize = "64px";
     if (error === false ) {
         smallInput.textContent = "";
         outputDisplay.textContent = "0";
@@ -153,3 +153,31 @@ document.addEventListener("keydown", function(event) {
         smallInput.textContent += ".";
     }
 });
+
+// Setting Max Size of Input Display
+function checkInputLength() {
+    if (smallInput.textContent.length > 25) {
+        smallInput.textContent = smallInput.textContent.substring(0, 25);
+    }
+}
+document.addEventListener("keydown", checkInputLength);
+document.addEventListener("click", checkInputLength);
+
+// Decreasing Font Size of Output Display Once Limit Exceeded
+
+function checkOutputLength() {
+    if (outputDisplay.textContent.length > 8) {
+        outputDisplay.style.fontSize = "54px";
+    } ;
+    if (outputDisplay.textContent.length > 10) {
+        outputDisplay.style.fontSize = "44px";
+    };
+    if (outputDisplay.textContent.length > 12) {
+        outputDisplay.style.fontSize = "34px";
+    };
+    if (outputDisplay.textContent.length > 16) {
+        outputDisplay.style.fontSize = "24px";
+    }
+}
+document.addEventListener("keydown", checkOutputLength);
+document.addEventListener("click", checkOutputLength);
