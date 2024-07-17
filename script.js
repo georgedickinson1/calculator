@@ -51,6 +51,7 @@ let alreadySymbol = false;
 // Connecting Display with Symbols
 function symbolCall(symbolValue) {
         error = false;
+        decimalPressed = false;
         if (alreadySymbol === true) {
             const result = equals();
             clearAll();
@@ -74,12 +75,13 @@ document.querySelectorAll(".button.symbol").forEach(button => {
 function clearAll(result) {
     alreadySymbol = false;
     outputDisplay.style.fontSize = "64px";
+    decimalPressed = false;
     if (error === false ) {
         smallInput.textContent = "";
         outputDisplay.textContent = "0";
     } else if (error === true) {
         smallInput.textContent = "";
-        outputDisplay.textContent = "ERROR";
+        outputDisplay.textContent = "Math ERROR";
         error = false;
     }
 };
@@ -164,7 +166,6 @@ document.addEventListener("keydown", checkInputLength);
 document.addEventListener("click", checkInputLength);
 
 // Decreasing Font Size of Output Display Once Limit Exceeded
-
 function checkOutputLength() {
     if (outputDisplay.textContent.length > 8) {
         outputDisplay.style.fontSize = "54px";
@@ -181,3 +182,15 @@ function checkOutputLength() {
 }
 document.addEventListener("keydown", checkOutputLength);
 document.addEventListener("click", checkOutputLength);
+
+// Handling Multiple Decimal Points 
+let decimal = document.querySelector("#decimal-point")
+let decimalPressed = false;
+decimal.addEventListener("click", () => {
+    if (decimalPressed === false) {
+        smallInput.textContent += ".";
+        decimalPressed = true;
+    } else {
+        return;
+    }
+})
